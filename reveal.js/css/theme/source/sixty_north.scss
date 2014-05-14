@@ -38,3 +38,15 @@ $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
         border: 0px solid black;
         box-shadow: none;
 }
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+        word-wrap: normal;
+        -webkit-hyphens: manual;
+        -moz-hyphens: manual;
+        hyphens: manual;
+}
