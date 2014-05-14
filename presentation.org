@@ -1,27 +1,63 @@
-* Slide 1
-#+BEGIN_SRC python
-  class Llama:
-      def __init__(self):
-          self.x = 3
-    
-  l = Llama()
-#+END_SRC
+#+REVEAL_THEME: sixty_north
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <h2>Python Refactoring</h2><h2>with Rope and Traad</h2><p><p>Austin Bingham<p><p>Sixty North AS<p>
+#+OPTIONS: num:nil, toc:nil
 
-#+BEGIN_SRC emacs-lisp
-       (defun org-xor (a b)
-          "Exclusive or."
-          (if a (not b) b))
-#+END_SRC
+* Hello!
+[[file:images/intro.png]]
 
-* Slide 2
-Something on slide 2
-** Subslide A
-subslide a...or something.
-** Subslide B
-Some information on this slide.
-* Slide 3
-code!
+* What is Rope?
+** A Python library for doing Python refactorings.
+#+ATTR_HTML: :width 50%
+[[file:images/ouroboros.jpg]]
 
+** Rope has powerful IDE-oriented features
+- Code completion
+- Finding definitions and occurrences
+- Organizing imports
+- Looking up docstrings
 
+* Basic concepts in rope [20 min.]
+** Project object connected to a directory
+** resources
+**  history (undo/redo)
+**  cross-projects
+**  Hard to drive “manually”. 
+Editors are good at providing the info it needs
+** Refactorings are “staged”
+- First you get a refactoring for a specific location
+- This can be inspected, but it doesn’t fully specify the changes to be made
+- Then you fully parameterize the refactoring, e.g. by providing a new name
+- This gives you a “change”
+- This change can them be performed.
+** non-refactoring stuff
+- findit
+- codeassist
+- validation
 
+* What is traad? [2 min]
+** HTTP server for driving rope
+similar in spirit to e.g. nREPL for clojure and many other tools
 
+* Why traad? [3 min.]
+** Integrating a Python environment into an editor is a) difficult and b) unnecessary
+** HTTP is (way) more than fast enough for this work.
+** Much easier support for multiple Python versions
+
+* Traad architecture [10 min.]
+** Bottle.py powering the http
+** Pykka for managing concurrency
+** synchronous responses for “fast” stuff.
+** state objects which get updated as the task proceeds.
+** emacs 
+
+* Demo [5 min.]
+** Simple renaming
+** Import cleanup
+** History
+
+* Links
+ - http://rope.sourceforge.net/
+ - http://github.com/abingham/traad
+
+* Thanks! Questions?
+[[file:images/SixtyNorth_logo.png]]
