@@ -1,0 +1,27 @@
+* Slide 1
+#+BEGIN_SRC python
+  class Llama:
+      def __init__(self):
+          self.x = 3
+    
+  l = Llama()
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+       (defun org-xor (a b)
+          "Exclusive or."
+          (if a (not b) b))
+#+END_SRC
+
+* Slide 2
+Something on slide 2
+** Subslide A
+subslide a...or something.
+** Subslide B
+Some information on this slide.
+* Slide 3
+code!
+
+
+
+
