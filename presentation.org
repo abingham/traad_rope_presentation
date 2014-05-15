@@ -8,7 +8,7 @@
 [[file:images/intro.png]]
 
 * What is Rope?
-** A Python library for doing Python refactorings.
+** A Python library for doing Python refactorings
 #+ATTR_HTML: :width 50%
 [[file:images/ouroboros.jpg]]
 
@@ -30,8 +30,8 @@
 ** Create a project
 
 #+BEGIN_SRC python
-  import rope.base.project
-  project = rope.base.project.Project('project_dir')
+  from rope.base.project import Project
+  project = Project('project_dir')
 #+END_SRC
 
 ** Walk project resources
@@ -60,11 +60,6 @@
 
 #+ATTR_REVEAL: :frag t
 =prefs= are stored in a file called =.ropeproject= at the project's root directory.
-
-*** Project features
-- Access to all *resources* in a directory
-- Preferences system
-- =Project.do()= applies changes to the project
 
 ** resources
 
@@ -128,7 +123,7 @@ After this the changes are actually performed.
 =Project.history= manages the history of changes that have been made.
 
 #+ATTR_REVEAL: :frag t
-Also remembers what has been *undone* and change dependencies.
+Also remembers what has been *undone* as well as change dependencies.
 
 ** Undoing changes
 
@@ -137,10 +132,8 @@ Undo the most recent changes
 project.history.undo()
 #+END_SRC
 
-#+ATTR_REVEAL: :frag t
 Or select more distance changes to undo
 
-#+ATTR_REVEAL: :frag t
 #+BEGIN_SRC python
 change = project.history.undo_list[3]
 project.history.undo(change)
@@ -191,13 +184,13 @@ Then call that with your *main* project and the refactoring initializer argument
   multiproject.perform(changes)
 #+END_SRC
 
-** Hard to drive “manually”. 
-Editors are good at providing the info it needs
+* Non-refactoring tools
 
-** non-refactoring stuff
-- findit
-- codeassist
-- validation
+[[file:images/knife.jpg]]
+
+* Not intended for "manual" operation
+
+[[file:images/operation_game.jpg]]
 
 * What is traad? [2 min]
 ** HTTP server for driving rope
@@ -223,6 +216,7 @@ similar in spirit to e.g. nREPL for clojure and many other tools
 * Links
  - http://rope.sourceforge.net/
  - http://github.com/abingham/traad
+ - https://github.com/abingham/traad_rope_presentation (this presentation)
 
 * Thanks! Questions?
 [[file:images/SixtyNorth_logo.png]]
