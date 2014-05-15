@@ -1,8 +1,7 @@
 #+STARTUP: showall
-#+REVEAL_THEME: sixty_north
+#+REVEAL_THEME: blood
 #+REVEAL_TITLE_SLIDE_TEMPLATE: <h2>Python Refactoring</h2><h2>with Rope and Traad</h2><p><p>Austin Bingham<p><p>Sixty North AS<p>
-#+style:<style>  pre.src  {background-color: #222222;}</style>
-#+style:<style>  .example {background-color: #FFFFCC;}</style>
+#+REVEAL_EXTRA_CSS: ./reveal.js/css/theme/sixty_north_mixin.css
 #+OPTIONS: num:nil, toc:nil
 
 * Hello!
