@@ -119,16 +119,81 @@ project.do(changes)
 
 After this the changes are actually performed.
 
-** history (undo/redo)
-** cross-projects
+* History
+
+[[file:images/abe.png]]
+
+** =history= object
+
+=Project.history= manages the history of changes that have been made.
+
+#+ATTR_REVEAL: :frag t
+Also remembers what has been *undone* and change dependencies.
+
+** Undoing changes
+
+Undo the most recent changes
+#+BEGIN_SRC python
+project.history.undo()
+#+END_SRC
+
+#+ATTR_REVEAL: :frag t
+Or select more distance changes to undo
+
+#+ATTR_REVEAL: :frag t
+#+BEGIN_SRC python
+change = project.history.undo_list[3]
+project.history.undo(change)
+#+END_SRC
+
+#+ATTR_REVEAL: :frag t
+This will undo all dependent changes.
+
+** Redoing changes
+
+You can redo changes that you've previously undone.
+
+#+BEGIN_SRC python
+change = project.history.redo_list[-2]
+project.history.redo(change)
+#+END_SRC
+
+* Multi-project refactoring
+
+[[file:images/octopus.jpg]]
+
+** The Multi-project refactoring class
+
+First create a =MultiProjectRefactoring= instance.
+
+#+BEGIN_SRC python
+  from rope.refactor import multiproject
+  
+  mpr = multiproject.MultiProjectRefactoring(
+      Rename, # type of refactoring to perform
+      [other_project1, other_project2, other_project3])  
+#+END_SRC
+
+Then call that with your *main* project and the refactoring initializer arguments
+
+#+BEGIN_SRC python
+  ref = mpr(main_project, 
+            some_resource,
+            offset=1337)
+#+END_SRC
+
+*** Create and perform the change
+
+#+BEGIN_SRC python
+  changes = ref.get_all_changes(some_resource,
+                                offset=1337)
+  
+  multiproject.perform(changes)
+#+END_SRC
+
 ** Hard to drive “manually”. 
 Editors are good at providing the info it needs
-** Refactorings are “staged”
-- First you get a refactoring for a specific location
-- This can be inspected, but it doesn’t fully specify the changes to be made
-- Then you fully parameterize the refactoring, e.g. by providing a new name
-- This gives you a “change”
-- This change can them be performed.
+
 ** non-refactoring stuff
 - findit
 - codeassist
