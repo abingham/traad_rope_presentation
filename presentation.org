@@ -197,8 +197,11 @@ Then call that with your *main* project and the refactoring initializer argument
 #+ATTR_REVEAL: :frag t
 *tråd* - svært tynn snor av fibrer av silke, ull e l, el. f eks av metall
 
-#+ATTR_REVEAL: :frag t
+* What is traad?
+
 /thread/
+
+[[file:images/thread.png]]
 
 ** traad is...
 
@@ -212,10 +215,33 @@ Various clients for driving the server
 
 [[file:images/traad client highlevel.png]]
 
-* Why traad? [3 min.]
-** Integrating a Python environment into an editor is a) difficult and b) unnecessary
-** HTTP is (way) more than fast enough for this work.
-** Much easier support for multiple Python versions
+* Why traad?
+
+[[file:images/jackiechan.jpg]]
+
+** Simpler integration with editors
+
+[[file:images/speaking computer.png]]
+
+Every corner of the programming universe knows how to speak HTTP+JSON
+
+** HTTP is (way) more than fast enough for this work
+
+[[file:images/cronometro.png]]
+
+The volume of data is low, and the response time only needs to be good enough for humans
+
+** Support for multiple Python versions
+
+[[file:images/multiple python versions.png]]
+
+The client has zero depenencies on the version of Python that traad is using
+
+** Proper level of abstraction
+
+[[file:images/different ides.png]]
+
+The problem domain of traad is Python refactoring, not Python integration with other languages.
 
 * Traad architecture [10 min.]
 ** Bottle.py powering the http
