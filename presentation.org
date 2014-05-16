@@ -243,22 +243,102 @@ The client has zero depenencies on the version of Python that traad is using
 
 The problem domain of traad is Python refactoring, not Python integration with other languages.
 
-* Traad architecture [10 min.]
-** Bottle.py powering the http
+* Traad architecture
+
+** Bottle
+
+[[file:images/bottle_logo.png]]
+
+Low-ceremony (sorta), powerful, and well-documented
+
 ** Pykka for managing concurrency
-** synchronous responses for “fast” stuff.
-** state objects which get updated as the task proceeds.
+
+[[file:images/oscar.png]]
+
+** Overall architecture
+
+[[file:images/overall architecture.png]]
+
+** Task state
+
+#+BEGIN_SRC python
+  {
+      1: { 'status': 'pending',
+           'description': 'Renaming FOO to BAR',
+           'changed_resources': [. . .]},
+      
+      2: { 'status': 'failure'},
+      
+      3: { 'status': 'success',
+           'calltip': 'uuid1(node=None, clock_seq=None)' }
+  }
+#+END_SRC
+
+#+ATTR_REVEAL: :frag t
+State is an /actor/ and thus threadsafe. Multiple asynchronous tasks
+could be accessing it at any time.
+
+** Asynchronous operations
+
+[[file:images/async_op.png]]
+
+** Synchronous operations
+
+[[file:images/sync_op.png]]
+
+** Asychronous vs. synchronous
+
+#+ATTR_REVEAL: :frag t
+*Asynchronous*  
+
+#+ATTR_REVEAL: :frag t
+- Rename          
+- Extract         
+- Organize imports
+
+#+ATTR_REVEAL: :frag t
+*Synchronous*
+
+#+ATTR_REVEAL: :frag t
+- Find definition
+- Get history
+- Calltip
+
 ** emacs 
 
-* Demo [5 min.]
+#+BEGIN_SRC lisp
+  ; Starts new traad server on the specified directory
+  (traad-open "~/projects/roid_rage")
+  
+  ; Renames whatever is a the point (i.e. under the cursor)
+  (traad-rename "RagingRoid")
+#+END_SRC
+
+#+BEGIN_SRC text
+  POST /refactor/rename HTTP/1.1
+  User-Agent: curl/7.30.0
+  Host: 127.0.0.1:65172
+  Accept: */*
+  Accept-Encoding: deflate, gzip
+  Content-Type: application/json
+  Content-Length: 104
+  
+  {"name":"RagingRoid",
+   "path":"\/Users\/sixtynorth\/projects\/roid_rage\/roid_rage\/roid.py",
+   "offset":102}
+#+END_SRC
+
+* Demos
 ** Simple renaming
 ** Import cleanup
 ** History
 
 * Links
- - http://rope.sourceforge.net/
- - http://github.com/abingham/traad
- - https://github.com/abingham/traad_rope_presentation (this presentation)
+ - Rope - http://rope.sourceforge.net/
+ - Traad - http://github.com/abingham/traad
+ - Pykka - http://www.pykka.org/
+ - Bottle - http://bottlepy.org/
+ - This presentation - http://github.com/abingham/traad_rope_presentation
 
 * Thanks! Questions?
 [[file:images/SixtyNorth_logo.png]]

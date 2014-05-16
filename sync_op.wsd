@@ -1,0 +1,8 @@
+title Synchronous operations
+
+Client->+Bottle: /findit/definition
+Bottle->Project: findit(...)
+Project->rope: findit(...)
+rope->Project: utilities.py:1234
+Project->Bottle: utilities:1234
+Bottle->Client: {"location": "utilities.py:1234"}

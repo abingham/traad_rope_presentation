@@ -1,0 +1,12 @@
+title Asynchronous operations
+
+Client->+Bottle: /refactoring/rename
+Bottle->-Client: task-id=23
+Bottle->+Project: rename()
+Project->State: {'Status': 'pending'}
+Project->rope: rename()
+Project->-State: {'Status': 'success'}
+Client->+Bottle: /task/23
+Bottle->State: task_status(23)
+State->Bottle: {'status': 'succes'}
+Bottle->-Client: {'status': 'success' }
