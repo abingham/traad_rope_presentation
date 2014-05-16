@@ -192,9 +192,25 @@ Then call that with your *main* project and the refactoring initializer argument
 
 [[file:images/operation_game.jpg]]
 
-* What is traad? [2 min]
-** HTTP server for driving rope
-similar in spirit to e.g. nREPL for clojure and many other tools
+* What is traad?
+
+#+ATTR_REVEAL: :frag t
+*tråd* - svært tynn snor av fibrer av silke, ull e l, el. f eks av metall
+
+#+ATTR_REVEAL: :frag t
+/thread/
+
+** traad is...
+
+An HTTP+JSON server for driving rope
+
+[[file:images/traad highlevel.png]]
+
+** traad is...
+
+Various clients for driving the server
+
+[[file:images/traad client highlevel.png]]
 
 * Why traad? [3 min.]
 ** Integrating a Python environment into an editor is a) difficult and b) unnecessary
