@@ -49,6 +49,10 @@
               todo.extend((child.path for child in res.get_children()))
 #+END_SRC
 
+~Project.get_resource(path)~ finds a resource at a relative path
+
+~Resource.get_children()~ returns an iterable over children
+
 ** Manage preferences
 
 =prefs= is a dict-like container of settings and preferences.
@@ -63,7 +67,7 @@
 
 ** resources
 
-The files and directories in the project.
+The files and directories in the project
 
 #+BEGIN_SRC python
   server = project.get_resource('traad/server.py')
@@ -113,6 +117,27 @@ project.do(changes)
 #+END_SRC
 
 After this the changes are actually performed.
+
+** The full process
+
+#+BEGIN_SRC python
+  from rope.base.project import Project
+  from rope.refactor.rename import Rename
+  
+  # Create the project
+  proj = Project('.')
+  
+  # Create the partially-bound refactoring
+  ren = Rename(project,
+               project.get_resource('traad/state.py'),
+               offset=42)
+  
+  # Calculate the changes for a fully-specified renaming
+  change = ren.get_changes('TacoCopter')
+  
+  # Perform the changes
+  project.do.changes()
+#+END_SRC
 
 * History
 
@@ -178,8 +203,9 @@ Then call that with your *main* project and the refactoring initializer argument
 *** Create and perform the change
 
 #+BEGIN_SRC python
-  changes = ref.get_all_changes(some_resource,
-                                offset=1337)
+  # Remember that `ref` is a renaming operation
+  changes = ref.get_all_changes(
+      "EnterpriseProxyManagerImplementationFactoryFactory")
   
   multiproject.perform(changes)
 #+END_SRC
@@ -195,7 +221,7 @@ Then call that with your *main* project and the refactoring initializer argument
 * What is traad?
 
 #+ATTR_REVEAL: :frag t
-*tråd* - svært tynn snor av fibrer av silke, ull e l, el. f eks av metall
+*tråd* - svært tynn snor av fibrer av silke, ull, el. f eks av metall
 
 * What is traad?
 
@@ -245,7 +271,7 @@ The problem domain of traad is Python refactoring, not Python integration with o
 
 * Traad architecture
 
-** Bottle
+**    
 
 [[file:images/bottle_logo.png]]
 
@@ -273,6 +299,8 @@ Low-ceremony (sorta), powerful, and well-documented
            'calltip': 'uuid1(node=None, clock_seq=None)' }
   }
 #+END_SRC
+
+Simple mapping of task-ids to dicts
 
 #+ATTR_REVEAL: :frag t
 State is an /actor/ and thus threadsafe. Multiple asynchronous tasks
@@ -306,6 +334,7 @@ could be accessing it at any time.
 
 ** emacs 
 
+The emacs lisp for renaming looks like this
 #+BEGIN_SRC lisp
   ; Starts new traad server on the specified directory
   (traad-open "~/projects/roid_rage")
@@ -313,6 +342,8 @@ could be accessing it at any time.
   ; Renames whatever is a the point (i.e. under the cursor)
   (traad-rename "RagingRoid")
 #+END_SRC
+
+And the HTTP message looks like this
 
 #+BEGIN_SRC text
   POST /refactor/rename HTTP/1.1
@@ -338,7 +369,11 @@ could be accessing it at any time.
  - Traad - http://github.com/abingham/traad
  - Pykka - http://www.pykka.org/
  - Bottle - http://bottlepy.org/
- - This presentation - http://github.com/abingham/traad_rope_presentation
+ - http://github.com/abingham/traad_rope_presentation
 
-* Thanks! Questions?
-[[file:images/SixtyNorth_logo.png]]
+*  
+    :PROPERTIES:
+    :reveal_background: ./images/closer.png
+    :reveal_background_trans: slide
+    :END:
+
