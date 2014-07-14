@@ -11,4 +11,16 @@ creating reveal.js presentations from org-mode documents. For best results, you'
  * [htmlize.el](http://www.emacswiki.org/emacs/Htmlize)
  * [emacs](http://www.gnu.org/software/emacs/)
 
+To create the reveal.js presentation from the org-file source, open the org file in emacs and run:
+
+```
+M-x org-reveal-export-to-html
+```
+
+or, to create the presentation and immediately open it in a browser:
+
+```
+M-x org-reveal-export-to-html-and-browse
+```
+
 Enjoy!
