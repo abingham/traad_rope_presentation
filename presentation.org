@@ -7,6 +7,9 @@
 * Hello!
 [[file:images/intro.png]]
 
+* Python is everywhere!
+file:images/mondrian_python.jpg
+
 * What is Rope?
 ** A Python library for doing Python refactorings
 #+ATTR_HTML: :width 50%
