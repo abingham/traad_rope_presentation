@@ -374,6 +374,12 @@ And the HTTP message looks like this
  - Bottle - http://bottlepy.org/
  - http://github.com/abingham/traad_rope_presentation
 
+* Support rope and traad
+
+file:images/uncle-sam-we-want-you.jpeg
+
+The success of rope and traad depend on users and developers like you!
+
 *  
     :PROPERTIES:
     :reveal_background: ./images/closer.png
