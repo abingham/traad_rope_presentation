@@ -37,6 +37,23 @@ file:images/mondrian_python.jpg
   project = Project('project_dir')
 #+END_SRC
 
+** resources
+
+The files and directories in the project
+
+#+BEGIN_SRC python
+  server = project.get_resource('traad/server.py')
+  print(server.name,
+        server.path,
+        server.is_folder())
+  
+  c1 = project.get_resource('').get_children()[0]
+  print(c1.name,
+        c1.path,
+        c1.is_folder())
+#+END_SRC
+
+
 ** Walk project resources
 
 #+BEGIN_SRC python
@@ -67,22 +84,6 @@ file:images/mondrian_python.jpg
 
 #+ATTR_REVEAL: :frag t
 =prefs= are stored in a file called =.ropeproject/config.py= at the project's root directory.
-
-** resources
-
-The files and directories in the project
-
-#+BEGIN_SRC python
-  server = project.get_resource('traad/server.py')
-  print(server.name,
-        server.path,
-        server.is_folder())
-  
-  c1 = project.get_resource('').get_children()[0]
-  print(c1.name,
-        c1.path,
-        c1.is_folder())
-#+END_SRC
 
 * Anatomy of a refactoring
 [[file:images/anatomy.jpg]]
@@ -139,7 +140,7 @@ After this the changes are actually performed.
   change = ren.get_changes('TacoCopter')
   
   # Perform the changes
-  project.do.changes()
+  project.do(changes())
 #+END_SRC
 
 * History
