@@ -363,10 +363,31 @@ And the HTTP message looks like this
    "offset":102}
 #+END_SRC
 
-* Demos
-** Simple renaming
-** Import cleanup
-** History
+* What kind of a keynote is this?
+
+file:images/key.jpg
+
+** Rope and traad only exist because of curious developers
+
+** It can seem hopeless to start a project like this
+
+** Find the niche that really interests you and fill it
+
+** There is no fame and fortune in this kind of development
+
+** But it is immensely satisfying and enjoyable
+
+** You will learn a great deal
+
+** And you really will be helping others
+
+** It's up to you, and you can do it!
+
+** Support rope and traad
+
+file:images/uncle-sam-we-want-you.jpeg
+
+The success of rope and traad depend on users and developers like you!
 
 * Links
  - Rope - http://rope.sourceforge.net/
@@ -374,12 +395,6 @@ And the HTTP message looks like this
  - Pykka - http://www.pykka.org/
  - Bottle - http://bottlepy.org/
  - http://github.com/abingham/traad_rope_presentation
-
-* Support rope and traad
-
-file:images/uncle-sam-we-want-you.jpeg
-
-The success of rope and traad depend on users and developers like you!
 
 *  
     :PROPERTIES:
